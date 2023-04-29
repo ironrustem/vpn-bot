@@ -1,11 +1,11 @@
 import asyncio
 import logging
 from aiogram import Bot, Dispatcher, types
+from aiogram.filters import Text
 from aiogram.filters.command import Command
 import os
 import sys
 from aiogram.types import FSInputFile, InputFile
-from aiogram.dispatcher.filters import Text
 
 # Включаем логирование, чтобы не пропустить важные сообщения
 logging.basicConfig(level=logging.INFO)
