@@ -27,7 +27,8 @@ async def cmd_start(message: types.Message):
 
 @dp.message(Text(text="Готов!"))
 async def cmd_start(message: types.Message):
-    if not os.path.exists("/root/wg0-client-{message.from_user.id}.conf"):
+    if not os.path.exists(f"/root/wg0-client-{message.from_user.id}.conf"):
+        print("уже есть")
         print(os.system(f"/opt/vpn-bot/vpn_bot/wireguard-install.sh {message.from_user.id}"))
 
     keyboard = types.ReplyKeyboardRemove()
