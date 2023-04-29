@@ -209,7 +209,7 @@ source /etc/wireguard/params
 # Check if WireGuard is already installed and load params
 if [[ -e /etc/wireguard/params ]]; then
 	source /etc/wireguard/params
-	manageMenu
+	newClient
 else
 	installWireGuard
 fi
