@@ -16,12 +16,18 @@ dp = Dispatcher()
 # Хэндлер на команду /start
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
-    await message.answer("Привет, я бот Маркиз!👋 Я даю доступ к впн)💻 \n\nНу что, готов получить доступ к лучшему сервису ?)")
+    await message.answer("Привет, я бот Маркиз!👋 Я дам доступ к впн)💻")
 
-@dp.message(Command("Get"))
+    kb = [
+        [types.KeyboardButton(text="Готов!")],
+    ]
+    keyboard = types.ReplyKeyboardMarkup(keyboard=kb)
+    await message.answer("Ну что, готов получить доступ к лучшему сервису ?", reply_markup=keyboard)
+
+@dp.message(Command("Готов!"))
 async def cmd_start(message: types.Message):
     print(os.system(f"./wireguard-install.sh {message.from_user.id}"))
-    photo = FSInputFile(f"/root/wg0-client-{message.from_user.id}.conf", filename="111.conf")
+    photo = FSInputFile(f"/root/wg0-client-{message.from_user.id}.conf", filename="W-VPN.conf")
     await bot.send_document(message.chat.id, document=photo)
 
 # Запуск процесса поллинга новых апдейтов
