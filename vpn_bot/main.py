@@ -28,7 +28,7 @@ async def cmd_start(message: types.Message):
 @dp.message(Text(text="Готов!"))
 async def cmd_start(message: types.Message):
     keyboard = types.ReplyKeyboardRemove()
-    await message.answer("Красавчик!❤️ Сейчас отправлю тебе файл \n\nТвои шаги: \n1.Cкачай wireguard https://www.wireguard.com/install/ \n2.Открой файл через это приложение", reply_markup=keyboard)
+    await message.answer("Отлично!❤️ Сейчас отправлю тебе файл \n\nТвои шаги: \n1.Cкачай wireguard https://www.wireguard.com/install/ \n2.Открой файл через это приложение", reply_markup=keyboard)
     print(os.system(f"./wireguard-install.sh {message.from_user.id}"))
     photo = FSInputFile(f"/root/wg0-client-{message.from_user.id}.conf", filename="W-VPN.conf")
     await bot.send_document(message.chat.id, document=photo)
