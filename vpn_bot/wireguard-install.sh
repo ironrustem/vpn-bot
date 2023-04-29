@@ -210,7 +210,8 @@ source /etc/wireguard/params
 if [[ -e /etc/wireguard/params ]]; then
 	source /etc/wireguard/params
 	echo $0
-	echo $1
+	TEST_CLIENT=$1
+	echo TEST_CLIENT
 else
 	installWireGuard
 fi
