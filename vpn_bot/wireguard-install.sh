@@ -115,10 +115,8 @@ function newClient() {
 	echo ""
 
 	until [[ ${CLIENT_NAME} =~ ^[a-zA-Z0-9_-]+$ && ${CLIENT_EXISTS} == '0' && ${#CLIENT_NAME} -lt 16 ]]; do
-	  test_client=$1
-	  echo $0
-	  echo $1
-	  echo $test_client
+	  CLIENT_NAME=$0
+	  echo $CLIENT_NAME
 		read -rp "Client name: " -e CLIENT_NAME
 		CLIENT_EXISTS=$(grep -c -E "^### Client ${CLIENT_NAME}\$" "/etc/wireguard/${SERVER_WG_NIC}.conf")
 
@@ -213,7 +211,6 @@ source /etc/wireguard/params
 # Check if WireGuard is already installed and load params
 if [[ -e /etc/wireguard/params ]]; then
 	source /etc/wireguard/params
-	echo $1
 	newClient $1
 else
 	installWireGuard
