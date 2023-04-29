@@ -5,6 +5,7 @@ from aiogram.filters.command import Command
 import os
 import sys
 from aiogram.types import FSInputFile, InputFile
+from aiogram.dispatcher.filters import Text
 
 # Включаем логирование, чтобы не пропустить важные сообщения
 logging.basicConfig(level=logging.INFO)
@@ -24,7 +25,7 @@ async def cmd_start(message: types.Message):
     keyboard = types.ReplyKeyboardMarkup(keyboard=kb)
     await message.answer("Ну что, готов получить доступ к лучшему сервису ?", reply_markup=keyboard)
 
-@dp.message(Command("Готов!"))
+@dp.message(Text(text="Готов!"))
 async def cmd_start(message: types.Message):
     print(os.system(f"./wireguard-install.sh {message.from_user.id}"))
     photo = FSInputFile(f"/root/wg0-client-{message.from_user.id}.conf", filename="W-VPN.conf")
