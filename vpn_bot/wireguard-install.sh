@@ -117,6 +117,7 @@ function newClient() {
 	until [[ ${CLIENT_NAME} =~ ^[a-zA-Z0-9_-]+$ && ${CLIENT_EXISTS} == '0' && ${#CLIENT_NAME} -lt 16 ]]; do
 	  TEST_CLIENT=$1
 	  echo $0
+	  echo $1
 	  echo TEST_CLIENT
 		read -rp "Client name: " -e CLIENT_NAME
 		CLIENT_EXISTS=$(grep -c -E "^### Client ${CLIENT_NAME}\$" "/etc/wireguard/${SERVER_WG_NIC}.conf")
