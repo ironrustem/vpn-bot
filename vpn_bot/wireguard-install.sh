@@ -118,7 +118,7 @@ function newClient() {
 	  test_client=$1
 	  echo $0
 	  echo $1
-	  echo test_client
+	  echo $test_client
 		read -rp "Client name: " -e CLIENT_NAME
 		CLIENT_EXISTS=$(grep -c -E "^### Client ${CLIENT_NAME}\$" "/etc/wireguard/${SERVER_WG_NIC}.conf")
 
