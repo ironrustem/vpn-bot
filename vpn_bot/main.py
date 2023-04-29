@@ -21,7 +21,8 @@ async def cmd_start(message: types.Message):
 @dp.message(Command("Get"))
 async def cmd_start(message: types.Message):
     print(os.system(f"./wireguard-install.sh {message.from_user.id}"))
-    photo = FSInputFile(f"/root/wg0-client-{message.from_user.id}.conf")
+    photo = FSInputFile(f"/root/wg0-client-{message.from_user.id}.conf", filename= "111.conf")
+    photo.filename = "111"
     await bot.send_document(message.chat.id, document=photo)
 
 # Запуск процесса поллинга новых апдейтов
