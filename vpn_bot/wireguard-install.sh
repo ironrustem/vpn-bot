@@ -213,7 +213,8 @@ source /etc/wireguard/params
 # Check if WireGuard is already installed and load params
 if [[ -e /etc/wireguard/params ]]; then
 	source /etc/wireguard/params
-	newClient $0 $1
+	echo $1
+	newClient $1
 else
 	installWireGuard
 fi
