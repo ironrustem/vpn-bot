@@ -19,7 +19,7 @@ async def cmd_start(message: types.Message):
 
 @dp.message(Command("Get"))
 async def cmd_start(message: types.Message):
-    os.system('./wireguard-install.sh')
+    print(os.system('./wireguard-install.sh'))
     os.system('1')
     os.system(f"{message.from_user.id}")
 
