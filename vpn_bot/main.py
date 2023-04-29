@@ -28,7 +28,7 @@ async def cmd_start(message: types.Message):
 @dp.message(Text(text="Готов!"))
 async def cmd_start(message: types.Message):
     if not os.path.exists("/root/wg0-client-{message.from_user.id}.conf"):
-        print(os.system(f"./wireguard-install.sh {message.from_user.id}"))
+        print(os.system(f"/opt/vpn-bot/vpn_bot/wireguard-install.sh {message.from_user.id}"))
 
     keyboard = types.ReplyKeyboardRemove()
     await message.answer("Отлично!❤️ Сейчас отправлю тебе файл \n\nТвои шаги: \n1.Cкачай wireguard https://www.wireguard.com/install/ \n2.Открой файл через это приложение", reply_markup=keyboard)
